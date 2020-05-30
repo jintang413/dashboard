@@ -1,0 +1,128 @@
+2020-05-29 23:59:24,200 INFO: Dashboard Startup [in /home/jin/dashboard/app/__init__.py:43]
+2020-05-30 00:04:08,556 INFO: Dashboard Startup [in /home/jin/dashboard/app/__init__.py:43]
+2020-05-30 00:04:32,433 ERROR: Exception on /edit_profile [POST] [in /home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1283, in _execute_context
+    self.dialect.do_execute(
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 590, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: UNIQUE constraint failed: user.username
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/jin/dashboard/app/routes.py", line 86, in edit_profile
+    db.session.commit()
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/sqlalchemy/orm/scoping.py", line 163, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 1042, in commit
+    self.transaction.commit()
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 504, in commit
+    self._prepare_impl()
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 483, in _prepare_impl
+    self.session.flush()
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 2523, in flush
+    self._flush(objects)
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 2664, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/sqlalchemy/util/langhelpers.py", line 68, in __exit__
+    compat.raise_(
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 178, in raise_
+    raise exception
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 2624, in _flush
+    flush_context.execute()
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/sqlalchemy/orm/unitofwork.py", line 422, in execute
+    rec.execute(self)
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/sqlalchemy/orm/unitofwork.py", line 586, in execute
+    persistence.save_obj(
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/sqlalchemy/orm/persistence.py", line 230, in save_obj
+    _emit_update_statements(
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/sqlalchemy/orm/persistence.py", line 994, in _emit_update_statements
+    c = cached_connections[connection].execute(
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1020, in execute
+    return meth(self, multiparams, params)
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/sqlalchemy/sql/elements.py", line 298, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1133, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1323, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1517, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 178, in raise_
+    raise exception
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1283, in _execute_context
+    self.dialect.do_execute(
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 590, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: user.username
+[SQL: UPDATE user SET username=?, about_me=? WHERE user.id = ?]
+[parameters: ('jin', '', 3)]
+(Background on this error at: http://sqlalche.me/e/gkpj)
+2020-05-30 00:34:18,066 INFO: Dashboard Startup [in /home/jin/dashboard/app/__init__.py:43]
+2020-05-30 00:34:45,809 INFO: Dashboard Startup [in /home/jin/dashboard/app/__init__.py:43]
+2020-05-30 09:17:21,413 INFO: Dashboard Startup [in /home/jin/dashboard/app/__init__.py:43]
+2020-05-30 09:17:38,035 INFO: Dashboard Startup [in /home/jin/dashboard/app/__init__.py:43]
+2020-05-30 09:18:06,274 INFO: Dashboard Startup [in /home/jin/dashboard/app/__init__.py:43]
+2020-05-30 09:18:16,704 INFO: Dashboard Startup [in /home/jin/dashboard/app/__init__.py:43]
+2020-05-30 09:22:37,690 INFO: Dashboard Startup [in /home/jin/dashboard/app/__init__.py:43]
+2020-05-30 09:24:13,307 INFO: Dashboard Startup [in /home/jin/dashboard/app/__init__.py:43]
+2020-05-30 09:25:35,724 INFO: Dashboard Startup [in /home/jin/dashboard/app/__init__.py:43]
+2020-05-30 09:33:25,350 INFO: Dashboard Startup [in /home/jin/dashboard/app/__init__.py:43]
+2020-05-30 09:33:55,312 INFO: Dashboard Startup [in /home/jin/dashboard/app/__init__.py:43]
+2020-05-30 09:34:28,185 INFO: Dashboard Startup [in /home/jin/dashboard/app/__init__.py:43]
+2020-05-30 10:59:23,066 INFO: Dashboard Startup [in /home/jin/dashboard/app/__init__.py:43]
+2020-05-30 11:01:05,893 INFO: Dashboard Startup [in /home/jin/dashboard/app/__init__.py:43]
+2020-05-30 11:13:43,682 INFO: Dashboard Startup [in /home/jin/dashboard/app/__init__.py:43]
+2020-05-30 11:13:49,313 INFO: Dashboard Startup [in /home/jin/dashboard/app/__init__.py:43]
+2020-05-30 11:13:59,612 ERROR: Exception on /user/jin [GET] [in /home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/jin/dashboard/app/routes.py", line 77, in user
+    return render_template('user.html', user=user, posts=posts)
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/flask/templating.py", line 138, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/jinja2/environment.py", line 930, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/jinja2/environment.py", line 883, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/jinja2/environment.py", line 857, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/jinja2/loaders.py", line 127, in load
+    code = environment.compile(source, name, filename)
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/jinja2/environment.py", line 638, in compile
+    self.handle_exception(source=source_hint)
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/home/jin/miniconda/envs/webserver/lib/python3.8/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/home/jin/dashboard/app/templates/user.html", line 14, in template
+    <p><a href="{{ url_for('follow'), username=user.username }}">Follow</a></p>
+jinja2.exceptions.TemplateSyntaxError: expected token 'end of print statement', got '='
